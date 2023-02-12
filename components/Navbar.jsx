@@ -71,7 +71,7 @@ function Navbar() {
                   <li key={link.name}>
                     <Link
                       href={link.link}
-                      className="duration-500 hover:text-orange-200"
+                      className="duration-500 hover:text-orange-200 "
                     >
                       {link.name}
                     </Link>
