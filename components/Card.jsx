@@ -13,10 +13,7 @@ const Card = ({ todoLists }) => {
   }
 
   return todoLists.map((todoList) => (
-    <div
-      key={todoList.id}
-      className="relative m-4 border-spacing-4 border-white bg-slate-200 p-4"
-    >
+    <div key={todoList.id} className="relative  bg-slate-200 p-4">
       <button
         onClick={() => deleteTodo(todoList.id)}
         className="absolute top-4 right-4"
