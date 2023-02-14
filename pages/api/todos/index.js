@@ -8,7 +8,6 @@ export default async function handler(req, res) {
       await prisma.todo.create({
         data,
       });
-      if (error) throw new Error(error);
 
       res.status(200).json({ message: "New todo created" });
     } catch (error) {

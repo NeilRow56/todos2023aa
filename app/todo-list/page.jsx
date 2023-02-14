@@ -16,10 +16,10 @@ export default async function page() {
   const todoLists = await getTodoLists();
 
   return (
-    <div className="space-4-4 p-4 text-slate-800">
-      <h1 className="p-4 ">Todo List</h1>
+    <div className="space-y-4 p-4 text-slate-800">
+      <h1 className="p-4 text-2xl font-bold">Todo List</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-        <Card />
+        <Card todoLists={todoLists} />
       </div>
     </div>
   );

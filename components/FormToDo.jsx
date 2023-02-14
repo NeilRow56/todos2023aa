@@ -1,9 +1,11 @@
 "use client";
+import { useRouter } from "next/navigation";
 
 import React from "react";
 import FormInput from "./FormInput";
 
 const FormToDo = () => {
+  const router = useRouter();
   async function handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -21,7 +23,9 @@ const FormToDo = () => {
     });
     const data = await res.json();
     console.log(data);
+    router.refresh();
     e.target.reset();
+    router.push("/todo-list");
   }
   return (
     <form
