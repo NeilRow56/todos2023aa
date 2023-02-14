@@ -1,11 +1,35 @@
+"use client";
+
 import React from "react";
 import FormInput from "./FormInput";
 
 const FormToDo = () => {
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    const res = await fetch("/api/todos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        todo: formData.get("todo"),
+        date: formData.get("date"),
+        time: formData.get("time"),
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+    e.target.reset();
+  }
   return (
-    <form className="w-[80vw] space-y-4 bg-gray-200 p-4 md:w-[40vw]">
+    <form
+      onSubmit={handleSubmit}
+      className="w-[80vw] space-y-4 bg-gray-200 p-4 md:w-[40vw]"
+    >
       <div className="flex flex-col gap-4">
-        <label className="text-left text-2xl font-bold text-slate-800">
+        <label className="mb-4 text-left text-2xl font-bold text-slate-800">
           Todo
         </label>
         <FormInput type="text" name="todo" placeholder="add your task" />
